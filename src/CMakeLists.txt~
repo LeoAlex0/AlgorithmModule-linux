@@ -1,0 +1,2 @@
+SET_SUBDIRECTORY(algorithm_module)
+SET_SUBDIRECTORY(test)

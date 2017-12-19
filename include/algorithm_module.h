@@ -9,45 +9,45 @@
 #include <utility>
 
 #ifdef WIN32
-#define PUBLIC __declspec(dllexport) //dllÊä³öº¯Êı£¬ÖÁÓÚÎªÊ²Ã´Òª½Ğpublic.......
+#define PUBLIC __declspec(dllexport) //dllè¾“å‡ºå‡½æ•°ï¼Œè‡³äºä¸ºä»€ä¹ˆè¦å«public.......
 #else
 #define PUBLIC
 #endif
 
 namespace GraphAlgorithm {
 
-	//ÊÊÅäÆ÷ÀàĞÍÉùÃ÷
+	//é€‚é…å™¨ç±»å‹å£°æ˜
 
-	//@Param idx_v:½Úµã±àºÅ
-	//@Return:½Úµãidx_vÏàÁ¬µÄµÚÒ»Ìõ±ßµÄ±àºÅ,ÎŞ±ßÊ±·µ»ØNIL
+	//@Param idx_v:èŠ‚ç‚¹ç¼–å·
+	//@Return:èŠ‚ç‚¹idx_vç›¸è¿çš„ç¬¬ä¸€æ¡è¾¹çš„ç¼–å·,æ— è¾¹æ—¶è¿”å›NIL
 	typedef std::function<int(int idx_v)> FirstEdgeAdapter;
 
-	//@Param: idx_v:½Úµã±àºÅ
-	//@Param: idx_e:µ±Ç°É¨Ãèµ½µÄ±ß
-	//@Return:·µ»ØÏÂÒ»Ìõ±ßµÄid,ÎŞ±ßÊ±·µ»ØNIL
+	//@Param: idx_v:èŠ‚ç‚¹ç¼–å·
+	//@Param: idx_e:å½“å‰æ‰«æåˆ°çš„è¾¹
+	//@Return:è¿”å›ä¸‹ä¸€æ¡è¾¹çš„id,æ— è¾¹æ—¶è¿”å›NIL
 	typedef std::function<int(int idx_v, int idx_e)> NextEdgeAdapter;
 
-	//@Param: idx_v:½Úµã±àºÅ
-	//@Param: idx_e:µ±Ç°É¨Ãèµ½µÄ±ß
-	//@Return:·µ»ØÖ¸Ïò½ÚµãµÄid,ÎŞ±ßÊ±·µ»ØNIL
+	//@Param: idx_v:èŠ‚ç‚¹ç¼–å·
+	//@Param: idx_e:å½“å‰æ‰«æåˆ°çš„è¾¹
+	//@Return:è¿”å›æŒ‡å‘èŠ‚ç‚¹çš„id,æ— è¾¹æ—¶è¿”å›NIL
 	typedef std::function<int(int idx_v, int idx_e)> EdgeToAdapter;
 
-	//@Param idx_v:±íÊ¾´Ë±ßÓëvÏàÁ¬
-	//@Param idx_e:±íÊ¾´Ë±ß±àºÅ
-	//@Return:½Úµãidx_vµÄ±àºÅÎªidx_eµÄ±ßµÄ³¤¶È
+	//@Param idx_v:è¡¨ç¤ºæ­¤è¾¹ä¸vç›¸è¿
+	//@Param idx_e:è¡¨ç¤ºæ­¤è¾¹ç¼–å·
+	//@Return:èŠ‚ç‚¹idx_vçš„ç¼–å·ä¸ºidx_eçš„è¾¹çš„é•¿åº¦
 	typedef std::function<double(int idx_v, int idx_e)> EdgeLengthAdapter;
 
-	//@Param idx_v:±íÊ¾½Úµãidx_v
-	//@Param idx_e:±íÊ¾Óëidx_vÏàÁ¬µÄ±àºÅÎªidx_eµÄ±ß
-	//@Return:½Úµãidx_vµÄ±àºÅÎªidx_eµÄ±ßµÄÈİÁ¿
+	//@Param idx_v:è¡¨ç¤ºèŠ‚ç‚¹idx_v
+	//@Param idx_e:è¡¨ç¤ºä¸idx_vç›¸è¿çš„ç¼–å·ä¸ºidx_eçš„è¾¹
+	//@Return:èŠ‚ç‚¹idx_vçš„ç¼–å·ä¸ºidx_eçš„è¾¹çš„å®¹é‡
 	typedef std::function <double(int idx_v, int idx_e)> EdgeContainAdapter;
 
-	//@Param first:±íÊ¾µãµÄĞòÁĞ
-	//@Param second:±íÊ¾±ßµÄĞòÁĞ
-	//@Description:Èç¹ûÎŞÂ·¾¶£¬ÔòµãµÄĞòÁĞÎª¿Õ
+	//@Param first:è¡¨ç¤ºç‚¹çš„åºåˆ—
+	//@Param second:è¡¨ç¤ºè¾¹çš„åºåˆ—
+	//@Description:å¦‚æœæ— è·¯å¾„ï¼Œåˆ™ç‚¹çš„åºåˆ—ä¸ºç©º
 	typedef std::pair<std::list<int>,std::list<int>> PathType;
 
-	//²»´æÔÚµÄ±àºÅ,³¤¶È..
+	//ä¸å­˜åœ¨çš„ç¼–å·,é•¿åº¦..
 	const int NIL = -1;
 	const static PathType NIL_PATH = std::make_pair(std::list<int>(), std::list<int>());
 
@@ -59,11 +59,11 @@ namespace GraphAlgorithm {
 		EdgeContainAdapter containOf;
 	};
 
-	//@Param idx_start_v:×î³õµÄ½Úµã±àºÅ
-	//@Param idx_dest_v:Ä¿±ê½Úµã±àºÅ
-	//@Param firstOf,nextOf,edgeTo:Í¼µÄÊôĞÔ
-	//@Return: ·µ»ØËùĞèµÄ²½Êı
-	
+	//@Param idx_start_v:æœ€åˆçš„èŠ‚ç‚¹ç¼–å·
+	//@Param idx_dest_v:ç›®æ ‡èŠ‚ç‚¹ç¼–å·
+	//@Param firstOf,nextOf,edgeTo:å›¾çš„å±æ€§
+	//@Return: è¿”å›æ‰€éœ€çš„æ­¥æ•°
+
 	PUBLIC PathType
 		bfs(
 			int idx_start_v,int idx_dest_v,
