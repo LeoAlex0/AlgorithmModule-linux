@@ -44,3 +44,7 @@ CTestTestfile.cmake
 *.exe
 *.out
 *.app
+/.vs
+/lib/algorithm_module.pdb
+/lib/algorithm_module.ilk
+/lib/algorithm_module.exp
