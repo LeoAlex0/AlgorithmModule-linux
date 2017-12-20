@@ -48,3 +48,4 @@ CTestTestfile.cmake
 /lib/algorithm_module.pdb
 /lib/algorithm_module.ilk
 /lib/algorithm_module.exp
+/CMakeSettings.json
