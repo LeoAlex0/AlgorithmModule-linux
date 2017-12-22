@@ -1,0 +1,7 @@
+﻿  stdafx.cpp
+  DllTest.cpp
+c:\users\the18\documents\visual studio 2017\projects\bfstest\dlltest\dlltest.cpp(1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  dllmain.cpp
+  正在生成代码...
+    正在创建库 c:\Users\The18\documents\visual studio 2017\Projects\BfsTest\Debug\DllTest.lib 和对象 c:\Users\The18\documents\visual studio 2017\Projects\BfsTest\Debug\DllTest.exp
+  DllTest.vcxproj -> c:\Users\The18\documents\visual studio 2017\Projects\BfsTest\Debug\DllTest.dll
