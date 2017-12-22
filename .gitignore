@@ -3,6 +3,7 @@ CMakeFiles
 CMakeScripts
 Testing
 bin
+lib
 *~
 */*~
 */*/*~
