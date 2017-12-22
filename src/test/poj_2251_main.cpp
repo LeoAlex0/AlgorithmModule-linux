@@ -48,11 +48,11 @@ GraphAlgorithm::GraphAdapter graph = {
 int main() {
 	int start, dest;
 
-	while (scanf("%d%d%d", &t, &a, &b) == 3 && t) {				//长宽高
+	while (scanf_s("%d%d%d", &t, &a, &b) == 3 && t) {				//长宽高
 
 		for (int i = 0; i < t; i++)
 			for (int j = 0; j < a; j++) {
-				scanf("%s", s[i][j]);
+				scanf_s("%s", s[i][j], 1024);
 				for (int k = 0; k < b; k++)
 					if (s[i][j][k] == 'S') { start = encoder(i, j, k); }
 					else if (s[i][j][k] == 'E') { dest = encoder(i, j, k); }
