@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 3.0)
 
 project(ALGORITHM_MODULE)
 
-if (CMAKE_BUILD_TYPE STREQUAL Debug) 
-	set(DEBUG YES)
+if (CMAKE_BUILD_TYPE STREQUAL Debug)
+	set(LIBRARY_TYPE STATIC)
 else()
-	set(DEBUG NO)
+	set(LIBRARY_TYPE SHARED)
 endif()
 
 include_directories(${ALGORITHM_MODULE_SOURCE_DIR}/include)
