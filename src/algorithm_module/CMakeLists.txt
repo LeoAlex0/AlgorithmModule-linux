@@ -1,5 +1,5 @@
 SET(LIBRARY_OUTPUT_PATH ${ALGORITHM_MODULE_SOURCE_DIR}/lib)
-SET(SRC_LIST algorithm_module.cpp)
+SET(SRC_LIST algorithm_module.cpp c_adapt.cpp)
 
 IF(DEBUG)
 SET(LIBRARY_TYPE STATIC)
