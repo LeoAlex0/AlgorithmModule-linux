@@ -3,7 +3,7 @@ SET(EXECUTABLE_OUTPUT_PATH ${ALGORITHM_MODULE_SOURCE_DIR}/bin)
 aux_source_directory (. SRC_LIST)
 
 FOREACH(source_file ${SRC_LIST})
-	STRING (REGEX REPLACE "_main.cpp" "" bin_name "${source_file}")
+	STRING (REGEX REPLACE "(./)|(_main.cpp)" "" bin_name "${source_file}")
 	ADD_EXECUTABLE ("${bin_name}" "${source_file}")
 	TARGET_LINK_LIBRARIES ("${bin_name}" algorithm_module)
 ENDFOREACH()
