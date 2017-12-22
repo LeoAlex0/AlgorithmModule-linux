@@ -1,2 +1,3 @@
 ADD_SUBDIRECTORY(algorithm_module)
+
 ADD_SUBDIRECTORY(test)
