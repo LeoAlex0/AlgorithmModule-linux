@@ -25,7 +25,7 @@ namespace BfsTest
         internal const string DllName = @"C:\Users\The18\Documents\Visual Studio 2017\Projects\3rd Party\Leo-AlgorithmModule\lib\algorithm_module.dll";
         internal const string TestDllName = @"C:\Users\The18\Documents\Visual Studio 2017\Projects\BfsTest\x64\Debug\DllTest.dll";
         [DllImport(DllName, CallingConvention = CallingConvention.Cdecl)]
-        internal static extern int EscapeMaze(int floors, int height, int width, char[,,] mazeData);
+        internal static extern int EscapeMaze(int floors, int height, int width, string mazeData);
         [DllImport(TestDllName, CallingConvention = CallingConvention.Cdecl)]
         private static extern int add(int[,] data);
         private void buttonEscapeClick(object s, RoutedEventArgs e)
@@ -37,19 +37,8 @@ namespace BfsTest
             var floors = int.Parse(firstData[0]);
             var height = int.Parse(firstData[1]);
             var width = int.Parse(firstData[2]);
-            var mazeData = new char[floors, height, width];
             data = data.Replace(Environment.NewLine, "").Replace(" ", "");
-            for (var x = 0; x < floors; x++)
-            {
-                for (var y = 0; y < height; y++)
-                {
-                    for (var z = 0; z < width; z++)
-                    {
-                        mazeData[x, y, z] = data[x * (width * height) + y * width + z];
-                    }
-                }
-            }
-            var result = EscapeMaze(floors, height, width, mazeData);
+            var result = EscapeMaze(floors, height, width, data);
             MessageBox.Show(result.ToString());
         }
         private void buttonEscapeRightClick(object s, MouseButtonEventArgs e)
