@@ -4,41 +4,9 @@ namespace Algorithm
 {
     namespace Graph
     {
-        /*typedef int(*_FirstEdgeAdapter)(int idx_v);
-        typedef int(*_NextEdgeAdapter)(int idx_v, int idx_e);
-        typedef int(*_EdgeToAdapter)(int idx_v, int idx_e);
-        PathType bfsResult;
-        std::vector<int> pointVector, edgeVector;
-        C_PUBLIC void RunBfs(int idx_start_v, int idx_dest_v,
-                             _FirstEdgeAdapter firstOf,
-                             _NextEdgeAdapter nextOf,
-                             _EdgeToAdapter destOf)
-        {
-            bfsResult = bfs(idx_start_v, idx_dest_v, FirstEdgeAdapter(firstOf), NextEdgeAdapter(nextOf), EdgeToAdapter(destOf));
-            pointVector = std::vector<int>(bfsResult.first.begin(), bfsResult.first.end());
-            edgeVector = std::vector<int>(bfsResult.second.begin(), bfsResult.second.end());
-
-        };
-        C_PUBLIC int* GetPointListPointer()
-        {
-            return &pointVector[0];
-        }
-        C_PUBLIC int GetPointListLength()
-        {
-            return pointVector.size();
-        }
-        C_PUBLIC int* GetEdgeListPointer()
-        {
-            return &edgeVector[0];
-        }
-        C_PUBLIC int GetEdgeListLength()
-        {
-            return edgeVector.size();
-        }*/
-
         const int maxn = 30;
         int a, b, t;
-        char*** s;
+        char s[maxn][maxn][maxn];
 
         struct Node
         {
@@ -88,20 +56,19 @@ namespace Algorithm
             walk
         };
 
-        C_PUBLIC int EscapeMaze(int floors, int height, int width, char*** mazeData)
+        C_PUBLIC int EscapeMaze(int floors, int height, int width, char mazeData[maxn][maxn][maxn])
         {
             t = floors;
             a = height;
             b = width;
-            s = mazeData;
             int start, dest;
             for (int i = 0; i < t; i++)
             {
                 for (int j = 0; j < a; j++)
                 {
-                    scanf_s("%s", s[i][j], 1024);
                     for (int k = 0; k < b; k++)
                     {
+                        s[i][j][k] = mazeData[i][j][k];
                         if (s[i][j][k] == 'S')
                         {
                             start = encoder(i, j, k);
