@@ -78,7 +78,8 @@ namespace Algorithm.Graph
         /// <summary>
         /// 表示空路径
         /// </summary>
-        public static readonly (List<int> Points, List<int> Edges) NilPath = (new List<int>(), new List<int>());
+        public static readonly (LinkedList<int> Points, LinkedList<int> Edges) NilPath
+            = (new LinkedList<int>(), new LinkedList<int>());
 
         /// <summary>
         /// 获取或设置开始节点的编号
@@ -95,7 +96,7 @@ namespace Algorithm.Graph
         /// <summary>
         /// 获取所要走的路径
         /// </summary>
-        public (List<int> Points, List<int> Edges) Path { get; private set; } = NilPath;
+        public (LinkedList<int> Points, LinkedList<int> Edges) Path { get; private set; } = NilPath;
         /// <summary>
         /// 获取走过的步数
         /// </summary>
@@ -110,27 +111,30 @@ namespace Algorithm.Graph
         /// </summary>
         public void Run()
         {
-            var indexList = new List<int> { StartNode };
+            var indexList = new LinkedList<int>(new int[]{ StartNode });
             var prevOf = new Dictionary<int, int> { { StartNode, Nil } };
             var prevEdgeOf = new Dictionary<int, int> { { StartNode, Nil } };
 
-            foreach (var v in new List<int>(indexList))
+            var vNode = indexList.Find(StartNode);
+            do
             {
+                var v = vNode.Value;
                 if (v == DestinationNode)
                 {
                     var (points, edges) = NilPath;
                     for (var u = v; u != Nil; u = prevOf[u])
                     {
-                        points.Insert(0, u);
-                        edges.Add(prevEdgeOf[u]);
+                        points.AddFirst(u);
+                        edges.AddLast(prevEdgeOf[u]);
                     }
-                    edges.RemoveAt(0);
+                    edges.RemoveFirst();
 
                     Path = (points, edges);
+                    return;
                 }
                 if (v != StartNode)
                 {
-                    indexList.RemoveAt(0);
+                    indexList.RemoveFirst();
                 }
 
                 for (var edge = Attributes.FirstOf(v); edge != Nil; edge = Attributes.NextOf(v, edge))
@@ -142,9 +146,15 @@ namespace Algorithm.Graph
                     }
                     prevOf.Add(v1, v);
                     prevEdgeOf.Add(v1, edge);
-                    indexList.Add(v1);
+                    indexList.AddLast(v1);
+                }
+                if (vNode.Next != null)
+                {
+                    vNode = vNode.Next;
                 }
             }
+            while (vNode.Next != null);
+
             Path = NilPath;
         }
     }
