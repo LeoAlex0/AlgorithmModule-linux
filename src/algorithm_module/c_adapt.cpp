@@ -63,7 +63,6 @@ namespace Algorithm
             a = height;
             b = width;
             int start, dest;
-            //std::string message = "";
             for (int i = 0; i < t; i++)
             {
                 for (int j = 0; j < a; j++)
@@ -71,7 +70,6 @@ namespace Algorithm
                     for (int k = 0; k < b; k++)
                     {
                         s[i][j][k] = mazeData[i*(a*b)+j*b+k];
-                        //message.push_back(s[i][j][k]);
                         if (s[i][j][k] == 'S')
                         {
                             start = encoder(i, j, k);
@@ -81,11 +79,8 @@ namespace Algorithm
                             dest = encoder(i, j, k);
                         }
                     }
-                    //message.push_back('\n');
                 }
-                //message.push_back('\n');
             }
-            //MessageBox(NULL, message.c_str(), "From C", MB_OK);
             return bfsStep(start, dest, graph);
         }
     }
