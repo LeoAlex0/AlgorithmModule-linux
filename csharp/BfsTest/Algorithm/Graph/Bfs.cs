@@ -45,10 +45,25 @@ namespace Algorithm.Graph
     /// </summary>
     public sealed class BfsGraphAdapter
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public FirstEdgeAdapter FirstOf { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public NextEdgeAdapter NextOf { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public EdgeToAdapter DestinationOf { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public EdgeLengthAdapter LengthOf { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public EdgeContainAdapter ContainOf { get; set; }
     }
     /// <summary>
