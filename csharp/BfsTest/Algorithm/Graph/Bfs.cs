@@ -46,23 +46,23 @@ namespace Algorithm.Graph
     public sealed class BfsGraphAdapter
     {
         /// <summary>
-        /// 
+        /// 返回与节点node相连的第一条边的编号,无边时返回Nil
         /// </summary>
         public FirstEdgeAdapter FirstOf { get; set; }
         /// <summary>
-        /// 
+        /// 返回下一条边的编号,无边时返回Nil
         /// </summary>
         public NextEdgeAdapter NextOf { get; set; }
         /// <summary>
-        /// 
+        /// 返回指向节点的编号,无边时返回Nil
         /// </summary>
         public EdgeToAdapter DestinationOf { get; set; }
         /// <summary>
-        /// 
+        /// 返回节点node的编号为edge的边的长度
         /// </summary>
         public EdgeLengthAdapter LengthOf { get; set; }
         /// <summary>
-        /// 
+        /// 返回节点node的编号为edge的边的长度
         /// </summary>
         public EdgeContainAdapter ContainOf { get; set; }
     }
