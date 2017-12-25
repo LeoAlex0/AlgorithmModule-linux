@@ -1,9 +1,9 @@
-// http://poj.org/problem?id=2251
+﻿// http://poj.org/problem?id=2251
 // 这是原题，不过。。因为POJ不支持C++11,所以就算把代码复制粘贴好也不能送上去评测
 
-#include "c_algorithm_module.h"
 #include <stdio.h>
 #include <stdbool.h>
+#include "c_algorithm_module.h"
 
 #define maxn (30)
 int a, b, t;
@@ -13,7 +13,7 @@ typedef struct Node {
 	int r, c, h;
 } Node;
 
-inline bool inside(Node v) {
+bool inside(Node v) {
 	return
 		v.r >= 0 && v.r < a &&
 		v.c >= 0 && v.c < b &&
@@ -22,6 +22,21 @@ inline bool inside(Node v) {
 }
 inline int encoder(int h, int r, int c) { return h * (a*b) + r * b + c; }
 
+int nextOf(int v,int e);
+int walk(int v,int i);
+
+int firstOf(int v) {
+	return nextOf(v, -1);
+}
+
+int nextOf(int v, int e) {
+	for (int e1 = e + 1; e1 < 6; e1++) {
+		if (walk(v, e1) != NIL)
+			return e1;
+	}
+	return NIL;
+};
+
 int walk(int v, int i) {
 	const static int dr[] = { -1, 0, 1, 0, 0, 0 };
 	const static int dc[] = { 0, -1, 0, 1, 0, 0 };
@@ -29,18 +44,6 @@ int walk(int v, int i) {
 	const Node next = { v % (a*b) / b + dr[i], v % b + dc[i], v / (a*b) + dh[i] };
 	if (inside(next)) return encoder(next.h, next.r, next.c);
 	else return NIL;
-}
-
-int nexfOf(int v, int e) {
-	for (int e1 = e+1; e1 < 6; e1++) {
-		if (walk(v, e1) != NIL)
-			return e1;
-	}
-	return NIL;
-};
-
-int firstOf(int v) {
-	return nextOf(v, -1);
 }
 
 int main() {
@@ -57,7 +60,7 @@ int main() {
 			}
 
 		const int ans =
-			AM_bfsStep(start, dest, firstOf, nexfOf, walk);
+			AM_bfsStep(start, dest, firstOf, nextOf, walk);
 		if (ans != NIL) printf("Escaped in %d minute(s).\n", ans);
 		else printf("Trapped!\n");
 	}

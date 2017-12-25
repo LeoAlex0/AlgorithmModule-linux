@@ -1,5 +1,4 @@
 #include "algorithm_module.h"
-#include "c_algorithm_module.h"
 
 extern "C" {
 
@@ -22,7 +21,7 @@ extern "C" {
 		return ret;
 	}
 
-	C_PUBLIC AM_PathType
+	PUBLIC AM_PathType
 		AM_bfs(
 			int idx_start_v, int idx_dest_v,
 			AM_FirstEdgeAdapter firstOf, AM_NextEdgeAdapter nextOf,

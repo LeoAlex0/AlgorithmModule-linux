@@ -8,6 +8,8 @@
 #include <list>
 #include <utility>
 
+#include "c_algorithm_module.h"
+
 #ifdef WIN32
 #define PUBLIC __declspec(dllexport) //dll输出函数，至于为什么要叫public.......
 #else
