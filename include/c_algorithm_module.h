@@ -23,7 +23,7 @@ extern "C" {
 	//不存在的路径
 	const static AM_PathType AM_NIL_PATH = { NULL,NULL,0,0 };
 	//不存在的编号
-	const int NIL = -1;
+	const int AM_NIL = -1;
 
 	//@Param idx_v:节点编号
 	//@Return: 相邻的第一条边的编号，无边返回AW_NIL

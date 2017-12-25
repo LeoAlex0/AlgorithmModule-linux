@@ -31,10 +31,10 @@ int firstOf(int v) {
 
 int nextOf(int v, int e) {
 	for (int e1 = e + 1; e1 < 6; e1++) {
-		if (walk(v, e1) != NIL)
+		if (walk(v, e1) != AM_NIL)
 			return e1;
 	}
-	return NIL;
+	return AM_NIL;
 };
 
 int walk(int v, int i) {
@@ -43,7 +43,7 @@ int walk(int v, int i) {
 	const static int dh[] = { 0, 0, 0, 0, 1, -1 };
 	const Node next = { v % (a*b) / b + dr[i], v % b + dc[i], v / (a*b) + dh[i] };
 	if (inside(next)) return encoder(next.h, next.r, next.c);
-	else return NIL;
+	else return AM_NIL;
 }
 
 int main() {
@@ -61,7 +61,7 @@ int main() {
 
 		const int ans =
 			AM_bfsStep(start, dest, firstOf, nextOf, walk);
-		if (ans != NIL) printf("Escaped in %d minute(s).\n", ans);
+		if (ans != AM_NIL) printf("Escaped in %d minute(s).\n", ans);
 		else printf("Trapped!\n");
 	}
 	return 0;
