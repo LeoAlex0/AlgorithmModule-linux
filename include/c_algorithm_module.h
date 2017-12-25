@@ -2,13 +2,16 @@
 
 #pragma once
 #include <stdlib.h>
-#ifdef WIN32
+#if (defined (WIN32)) && (defined (__cplusplus))
 #define C_PUBLIC extern "C" __declspec(dllexport) //C语言的导出标记
 #elif defined (__cplusplus)
 #define C_PUBLIC extern	"C"
+#elif defined (WIN32)
+#define C_PUBLIC __declspec(dllexport)
 #else
 #define C_PUBLIC
 #endif
+
 
 //vertexList为路径上所有节点组成的数组(动态)，vetexSize为其大小
 //edgeList为路径上所有边组成的数组(动态)，edgeSize为其大小
@@ -18,7 +21,7 @@ typedef struct{
 }AM_PathType;
 
 //不存在的路径
-const static AM_PathType AM_NIL_PATH = { NULL,0,NULL,0 };
+const static AM_PathType AM_NIL_PATH = { NULL,NULL,0,0 };
 //不存在的编号
 const int NIL = -1;
 
@@ -55,3 +58,19 @@ AM_bfs(
 	int idx_start_v,int idx_dest_v,
 	AM_FirstEdgeAdapter firstOf,AM_NextEdgeAdapter nextOf,
 	AM_EdgeToAdapter destOf);
+
+//@Param idx_start_v:最初的节点编号
+//@Param idx_dest_v:目标节点编号
+//@Param firstOf,nextOf,edgeTo:图的属性
+//@Return: 返回所走的路径的长度
+C_PUBLIC int
+AM_bfsStep(
+	int idx_start_v, int idx_dest_v,
+	AM_FirstEdgeAdapter firstOf, AM_NextEdgeAdapter nextOf,
+	AM_EdgeToAdapter destOf) {
+
+	AM_PathType tmp = AM_bfs(idx_start_v, idx_dest_v, firstOf, nextOf, destOf);
+	free(tmp.edgeList);
+	free(tmp.vertexList);
+	return tmp.vertexSize - 1;
+}
