@@ -20,7 +20,7 @@ bool inside(Node v) {
 		v.h >= 0 && v.h < t &&
 		s[v.h][v.r][v.c] != '#';
 }
-inline int encoder(int h, int r, int c) { return h * (a*b) + r * b + c; }
+int encoder(int h, int r, int c) { return h * (a*b) + r * b + c; }
 
 int nextOf(int v,int e);
 int walk(int v,int i);
@@ -49,11 +49,11 @@ int walk(int v, int i) {
 int main() {
 	int start, dest;
 
-	while (scanf_s("%d%d%d", &t, &a, &b) == 3 && t) {				//长宽高
+	while (scanf("%d%d%d", &t, &a, &b) == 3 && t) {				//长宽高
 
 		for (int i = 0; i < t; i++)
 			for (int j = 0; j < a; j++) {
-				scanf_s("%s", s[i][j], 1024);
+				scanf("%s", s[i][j]);
 				for (int k = 0; k < b; k++)
 					if (s[i][j][k] == 'S') { start = encoder(i, j, k); }
 					else if (s[i][j][k] == 'E') { dest = encoder(i, j, k); }

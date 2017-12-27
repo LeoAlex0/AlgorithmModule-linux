@@ -6,7 +6,7 @@
 #ifdef WIN32
 #define PUBLIC __declspec(dllexport)
 #else
-#define C_PUBLIC
+#define PUBLIC
 #endif
 
 #ifdef __cplusplus
@@ -63,17 +63,11 @@ extern "C" {
 	//@Param idx_dest_v:目标节点编号
 	//@Param firstOf,nextOf,edgeTo:图的属性
 	//@Return: 返回所走的路径的长度
-	int
+	PUBLIC int
 		AM_bfsStep(
 			int idx_start_v, int idx_dest_v,
 			AM_FirstEdgeAdapter firstOf, AM_NextEdgeAdapter nextOf,
-			AM_EdgeToAdapter destOf) {
-
-		AM_PathType tmp = AM_bfs(idx_start_v, idx_dest_v, firstOf, nextOf, destOf);
-		free(tmp.edgeList);
-		free(tmp.vertexList);
-		return tmp.vertexSize - 1;
-	}
+			AM_EdgeToAdapter destOf);
 
 #ifdef __cplusplus
 }
