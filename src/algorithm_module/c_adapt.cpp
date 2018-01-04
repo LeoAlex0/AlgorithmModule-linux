@@ -33,12 +33,12 @@ extern "C" {
 			firstOf, nextOf, destOf));
 	}
 
-  PUBLIC int
-  AM_bfsStep(
-	     int idx_start_v,int idx_dest_v,
-	     AM_FirstEdgeAdapter firstOf,AM_NextEdgeAdapter nextOf,
-	     AM_EdgeToAdapter destOf) {
-    return Algorithm::Graph::bfsStep(idx_start_v,idx_dest_v,
-				     firstOf,nextOf,destOf);
-  }
+	PUBLIC int
+		AM_bfsStep(
+			int idx_start_v, int idx_dest_v,
+			AM_FirstEdgeAdapter firstOf, AM_NextEdgeAdapter nextOf,
+			AM_EdgeToAdapter destOf) {
+		return Algorithm::Graph::bfsStep(idx_start_v, idx_dest_v,
+			firstOf, nextOf, destOf);
+	}
 }

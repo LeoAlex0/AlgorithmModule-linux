@@ -49,6 +49,14 @@ extern "C" {
 	//@Return:节点idx_v的编号为idx_e的边的容量
 	typedef double(*AM_EdgeContainAdapter)(int idx_v, int idx_e);
 
+	typedef struct {
+		AM_FirstEdgeAdapter firstOf;
+		AM_NextEdgeAdapter nextOf;
+		AM_EdgeToAdapter destOf;
+		AM_EdgeLengthAdapter lengthOf;
+		AM_EdgeContainAdapter containOf;
+	}AM_Graph;
+
 	//@Param idx_start_v:最初的节点编号
 	//@Param idx_dest_v:目标节点编号
 	//@Param firstOf,nextOf,edgeTo:图的属性
